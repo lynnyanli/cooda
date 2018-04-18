@@ -251,7 +251,7 @@ for i in range(len(simulationo)):
                 f_j.write("\n")
 
 #dual policy
-#'penalty':[i*500 for i in range(6)],'inform':[0,1,2]
+'penalty':[i*500 for i in range(6)],'inform':[0,1,2]
 
 with open(filename_dualjoin,"w") as f_dj:
         with open(filename_dualdefault,"w") as f_dd:
