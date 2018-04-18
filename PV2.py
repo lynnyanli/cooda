@@ -250,10 +250,11 @@ for i in range(len(simulationo)):
                 f_d.write("\n")
                 f_j.write("\n")
 
+#dual policy
 'penalty':[i*500 for i in range(6)],'inform':[0,1,2]
-'inform':[0,1,2]
-with open(filename_join,"w") as f_j:
-        with open(filename_default,"w") as f_d:
+
+with open(filename_dualjoin,"w") as f_dj:
+        with open(filename_dualdefault,"w") as f_dd:
                 avg=[0]*periods
                 with open(item+'-%s-action.csv'%(sensetiveanalyse[item][i]), 'w') as action_out:
                     with open("average.csv","a") as f:
