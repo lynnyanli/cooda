@@ -252,14 +252,30 @@ for i in range(len(simulationo)):
 
 #dual policy
 #'penalty':[i*500 for i in range(6)],'inform':[0,1,2]
+#dualsimulation=['penalty','inform']
+dpenalty=[i*300 for i in range(11)]
+dinform=[0,1,2]
+for i in range(len(dpenalty)):
+    filename_djoin="dualjoin_penalty%s.csv"%(dpenalty[i])
+    filename_ddefault="dualdefault_penalty%s.csv"%(dpenalty[i])
+    with open(filename_djoin,"w") as f_dj:
+        with open(filename_ddefault,"w") as f_dd:
+            para=[500,0.9,0,0.2,0.8,0]
+            para[1]=dpenalty[i]
+            for j in range(len(dinform))
+                para[5]=dinform[j]
+                default,join=run(para[0],para[1],para[2],para[3],para[4],para[5])
+                f_dj.write("%s"%dinform[j])
+                f_dj.write("%s"%dinform[j])
+                for m in range(len(default)):
+                    f_dj.write(",%f"%join[m])
+                    f_dd.write(",%f"%default[m])
 
-with open(filename_dualjoin,"w") as f_dj:
-        with open(filename_dualdefault,"w") as f_dd:
-                avg=[0]*periods
-                with open(item+'-%s-action.csv'%(sensetiveanalyse[item][i]), 'w') as action_out:
-                    with open("average.csv","a") as f:
+#           avg=[0]*periods
+            for i in range ()
+                default,join=run(500,0.9,sensetiveanalyse[penalty],0.2,0.8,0)
                         f.write("%s"%sensetiveanalyse[item][i])
-                        for k in range(periods):
+                        for k in range(times):
                             for m in range(times-1):
                                 action_out.write("%d,"%(action[m][k]))
                                 avg[k]+=action[m][k]/times
