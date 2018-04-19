@@ -221,56 +221,51 @@ sensetiveanalyse={'shareratio':[i*0.05+0.75 for i in range(6)],'high':[i*0.05+0.
  	'penalty':[i*500 for i in range(6)],'inform':[0,1,2]}
 simulationo=['shareratio','penalty','low','high','inform']
 
-#for i in range(len(simulationo)):
-#   simulationobject=sensetiveanalyse[simulationo[i]] 
-#   filename_join="join_%s.csv"%(simulationo[i])
-#   filename_default="default_%s.csv"%(simulationo[i])
-#   skrr=3000*i
-#   with open(filename_join,"w") as f_j:
-#       with open(filename_default,"w") as f_d:
-#           for j in range(len(simulationobject)):
-#               para=[500,0.9,0,0.2,0.8,0]
-#               para[i+2]=simulationobject[j]
-#               default,join=run(para[0],para[1],para[2],para[3],para[4],para[5])
-#               f_d.write("%f"%simulationobject[j])
-#               f_j.write("%f"%simulationobject[j])
-#               for m in range(len(default)):
-#                   f_j.write(",%f"%join[m])
-#                   f_d.write(",%f"%default[m])
-#                   strr = '(●\'-\'●)ﾉ'+'-'*(skrr//270)+'Ｏ xiu~'
-#                   if skrr==13499:
-#                       strr+='\n'+'Paaa！'+'\n'
-#                   elif skrr==7299:
-#                       print('\n就快啦~')
-#                   elif skrr==10999:
-#                       print('\n马上马上~')
-#                   sys.stdout.write('\r'+'[%s%%]'%(skrr//135+1)+strr)
-#                   sys.stdout.flush()
-#                   skrr+=1
-#               f_d.write("\n")
-#               f_j.write("\n")
+for i in range(len(simulationo)):
+   simulationobject=sensetiveanalyse[simulationo[i]] 
+   filename_join="join_%s.csv"%(simulationo[i])
+   filename_default="default_%s.csv"%(simulationo[i])
+   skrr=3000*i
+   with open(filename_join,"w") as f_j:
+       with open(filename_default,"w") as f_d:
+           for j in range(len(simulationobject)):
+               para=[500,0.9,0,0.2,0.8,0]
+               para[i+2]=simulationobject[j]
+               default,join=run(para[0],para[1],para[2],para[3],para[4],para[5])
+               f_d.write("%f"%simulationobject[j])
+               f_j.write("%f"%simulationobject[j])
+               for m in range(len(default)):
+                   f_j.write(",%f"%join[m])
+                   f_d.write(",%f"%default[m])
+                   skrr+=1
+                   strr = '(●\'-\'●)ﾉ'+'-'*(skrr//270)+'Ｏ xiu~'
+                   if skrr==13499:
+                       strr+='\n'+'Paaa！'+'\n'
+                   elif skrr==7299:
+                       print('\n就快啦~')
+                   elif skrr==10999:
+                       print('\n马上马上~')
+                   sys.stdout.write('\r'+'[%s%%]'%(skrr//135+1)+strr)
+                   sys.stdout.flush()
+               f_d.write("\n")
+               f_j.write("\n")
 #
 #dual policy
 #'penalty':[i*500 for i in range(6)],'inform':[0,1,2]
 #dualsimulation=['penalty','inform']
-dpenalty=[i*300 for i in range(11)]
-dinform=[0,1,2]
-filename_djoin="dual_join.csv"
-filename_ddefault="dualde_fault.csv"
-with open(filename_djoin,"w") as f_dj:
-    with open(filename_ddefault,"w") as f_dd:
-        for i in range(len(dpenalty)):
-            avgd=[0]*len(dinform)
-            avgj=[0]*len(dinform)
-            para=[500,0.9,0,0.2,0.8,0]
-            para[2]=dpenalty[i]
-            for j in range(len(dinform)):
-                para[5]=dinform[j]
-                default,join=run(para[0],para[1],para[2],para[3],para[4],para[5])
-                avgd[j]=sum(default)/len(default)
-                avgj[j]=sum(join)/len(join)
-                f_dj.write("%f,"%avgd[j])
-                f_dd.write("%f,"%avgj[j])
-            f_dj.write("\n")
-            f_dd.write("\n")
+#dpenalty=[i*300 for i in range(11)]
+#dinform=[0,1,2]
+#filename_djoin="dual_join.csv"
+#filename_ddefault="dual_default.csv"
+#with open(filename_djoin,"w") as f_dj:
+#    with open(filename_ddefault,"w") as f_dd:
+#        for i in range(len(dpenalty)):
+#            for j in range(len(dinform)):
+#                default,join=run(500,0.9,dpenalty[i],0.2,0.8,dinform[j])
+#                avgd=sum(default)/len(default)
+#                avgj=sum(join)/len(join)
+#                f_dd.write(",%f"%avgd)
+#                f_dj.write(",%f"%avgj)
+#            f_dj.write("\n")
+#            f_dd.write("\n")
 
