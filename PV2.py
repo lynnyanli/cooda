@@ -230,7 +230,7 @@ for i in range(len(simulationo)):
        with open(filename_default,"w") as f_d:
            for j in range(len(simulationobject)):
                para=[500,0.9,0,0.2,0.8,0]
-               para[i+2]=simulationobject[j]
+               para[i+1]=simulationobject[j]
                default,join=run(para[0],para[1],para[2],para[3],para[4],para[5])
                f_d.write("%f"%simulationobject[j])
                f_j.write("%f"%simulationobject[j])
